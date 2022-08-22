@@ -59,4 +59,16 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getEvents()
+    {
+        return $this->hasMany(Event::class, 'creator_id', 'id');
+    }
+
+    public function getFriends()
+    {
+        return $this->hasMany(Friend::class, 'asking_id', 'id')->where('accepted', true);
+    }
+
+    
 }
