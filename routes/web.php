@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\SocialAuthController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,18 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+//google login
+Route::get('/login/google', [SocialAuthController::class, 'google']);
+Route::get('/login/google/redirect', [SocialAuthController::class, 'redirect']);
+
+
+// Route::get('/login/', function () {
+//     return Socialite::driver('google')->redirect();
+// });
+ 
+// Route::get('/auth/callback', function () {
+//     $user = Socialite::driver('google')->user();
+ 
+//     // $user->token
+// });
