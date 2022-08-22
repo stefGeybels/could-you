@@ -17,8 +17,7 @@ use Laravel\Socialite\Facades\Socialite;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    Event::helloWorld();
+    return view('welcome');
 });
 
 

@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('Event', function($app)
         {
-            return new EventCreatingService;
+            return new EventCreatingService(auth()->user()->id);
         });
     }
 }
