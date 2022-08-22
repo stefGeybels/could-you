@@ -33,9 +33,10 @@ class SocialAuthController extends Controller
             'name' => $user->name,
             'email' => $user->email,
             'password' => Hash::make($user->id),
-            // 'profile_photo_path' => $user->picture,
+            'profile_photo_path' => $user->avatar,
         ]);
 
+ 
         $newUser->oauth_id = $user->id;
         $newUser->save();
 
