@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SocialAuthController;
+use App\Services\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -16,8 +17,11 @@ use Laravel\Socialite\Facades\Socialite;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    Event::helloWorld();
 });
+
+
 
 Route::middleware([
     'auth:sanctum',
