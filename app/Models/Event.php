@@ -29,7 +29,9 @@ class Event extends Model
 
     public function getItems($id)
     {
-        $serviceClass = new PlatformServices;
+        //static user id for less db request
+        // first user will always be a dummie user
+        $serviceClass = new PlatformServices(1);
         $modelType = $serviceClass->getTypeClassById($id);
         return $this->hasMany($modelType::class, 'event_id', 'id');
     }
