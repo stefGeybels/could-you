@@ -4,30 +4,31 @@ namespace App\Services;
 
 use App\Models\Check;
 use App\Models\Event;
+use App\Models\StandardEvent;
 use App\Models\Type;
 use DateTime;
 use App\Services\PlatformServices;
 
 class EventCreatingService extends PlatformServices
 {
-    protected $userId;
+    // protected $userId;
 
-    protected $datetime;
+    // protected $datetime;
 
-    protected $event;
+    // protected $event;
 
-    protected $types = [
-        'checks' => Check::class,
-    ];
+    // protected $types = [
+    //     'checks' => Check::class,
+    // ];
 
-    public function __construct($userId)
-    {
-        $this->userId = $userId;
+    // public function __construct($userId)
+    // {
+    //     $this->userId = $userId;
         
-        $this->datetime = new DateTime();
+    //     $this->datetime = new DateTime();
 
-        $this->datetime = $this->datetime->format('Y-m-d');
-    }
+    //     $this->datetime = $this->datetime->format('Y-m-d');
+    // }
     
     public function createEvent($invitedUser, $typeId, $title, $date, array $itemArray)
     {
@@ -128,6 +129,23 @@ class EventCreatingService extends PlatformServices
         {
             $item->delete();
         }
+
+        return true;
+    }
+
+    public function makeFavorite($eventId)
+    {
+        $standardEvent = StandardEvent::create([
+            'event_id' => $eventId,
+            'user_id' => $this->userId,
+        ]);
+
+        return $standardEvent;
+    }
+
+    public function deleteFavorite($favoriteId)
+    {
+        StandardEvent::find($favoriteId)->delete();
 
         return true;
     }
