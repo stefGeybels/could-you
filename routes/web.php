@@ -5,6 +5,7 @@ use App\Models\Event;
 use App\Models\User;
 use App\Services\Facades\EventSettings;
 use App\Services\Facades\FriendSettings;
+use App\Services\Facades\NotificationSending;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -21,6 +22,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function ()
 {
+    NotificationSending::sendInvite('stef.geybels@gmail.com');
     return view('welcome');
 });
 

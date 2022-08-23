@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Services\EventCreatingService;
 use App\Services\Facades\NotificationSending;
 use App\Services\FriendsCreatingService;
+use App\Services\NotificationSendingService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,6 +31,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton('Friend', function($app) { return new FriendsCreatingService(auth()->user()->id); });
 
-        $this->app->singleton('Notification', function($app) { return new NotificationSending(); });
+        $this->app->singleton('Notification', function($app) { return new NotificationSendingService(auth()->user()->id); });
     }
 }
