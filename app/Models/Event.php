@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\PlatformServices;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,9 +27,11 @@ class Event extends Model
         return $this->belongsTo(Type::class);
     }
 
-    public function getChecks()
+    public function getItems($id)
     {
-        return $this->hasMany(Check::class, 'event_id', 'id');
+        $serviceClass = new PlatformServices;
+        $modelType = $serviceClass->getTypeClassById($id);
+        return $this->hasMany($modelType::class, 'event_id', 'id');
     }
 
 }

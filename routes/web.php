@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\SocialAuthController;
+use App\Models\Event;
+use App\Services\Facades\EventSettings;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -16,8 +18,12 @@ use Laravel\Socialite\Facades\Socialite;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // EventSettings::createEvent(1, 1, 'extending test getting type in static function', '2022-1-1', ['if this works I\'m happy']);
+    // EventSettings::deleteEvent(9);
+    // EventSettings::updateItem(5, 1, 'dit is de nieuwe title');
+    EventSettings::typeChange(20,2);
 });
+
 
 Route::middleware([
     'auth:sanctum',
