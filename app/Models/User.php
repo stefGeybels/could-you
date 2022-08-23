@@ -67,7 +67,32 @@ class User extends Authenticatable
 
     public function getFriends()
     {
-        return $this->hasMany(Friend::class, 'asking_id', 'id')->where('accepted', true);
+        $friendArray = [];
+        $gotAsked = $this->hasMany(Friend::class, 'asking_id', 'id')->where('accepted', true)->get();
+        $asked = $this->hasMany(Friend::class, 'asked_id', 'id')->where('accepted', true)->get();
+        
+        foreach ($gotAsked as $friend) 
+        {
+            $newFriend = [
+                'id' => $friend->id,
+                'friend_id' => $friend->asked_id,
+            ];
+
+            array_push($friendArray, $newFriend);
+        }
+
+        foreach ($asked as $friend) 
+        {
+            $newFriend = [
+                'id' => $friend->id,
+                'friend_id' => $friend->asked_id,
+            ];
+
+            array_push($friendArray, $newFriend);
+        }
+
+        return $friendArray;
+
     }
 
     
