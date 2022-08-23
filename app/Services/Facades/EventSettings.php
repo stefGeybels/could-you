@@ -2,7 +2,7 @@
 
 namespace App\Services\Facades;
 
-class Event
+class EventSettings
 {
 
     protected static function resolveFacade($name)
