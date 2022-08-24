@@ -22,7 +22,8 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function ()
 {
-    NotificationSending::sendInvite('stef.geybels@gmail.com');
+    // NotificationSending::sendInvite('stef.geybels@gmail.com');
+    dd(FriendSettings::findFriend(2));
     return view('welcome');
 });
 

@@ -76,4 +76,11 @@ class FriendsCreatingService extends PlatformServices
         return true;
     }
 
+    public function findFriend($friendId)
+    {
+        $friend = new Friend();
+
+        return $friend->specificFriend($this->userId, $friendId);
+    }
+
 }
