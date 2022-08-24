@@ -1,6 +1,8 @@
 @component('mail::message')
 
-Dit is onze twede mail
+Hey papa,
+
+Gelukkige verjaardag.
 
 
 @endcomponent
