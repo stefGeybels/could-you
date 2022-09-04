@@ -29,7 +29,7 @@
                     <x-jet-nav-link href="{{ route('friends') }}" :active="request()->routeIs('friends')">
                         {{ __('Friends') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('calendar')">
+                    <x-jet-nav-link href="{{ route('calendar') }}" :active="request()->routeIs('calendar')">
                         {{ __('Calendar') }}
                     </x-jet-nav-link>
                 </div>

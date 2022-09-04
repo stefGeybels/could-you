@@ -41,6 +41,8 @@ Route::middleware([
     Route::get('/events', function(){ return view('platform.events.main'); })->name('events');
 
     Route::get('/friends', function(){ return view('platform.friends.main'); })->name('friends');
+
+    Route::get('/calendar', function() { return view('platform.calendar.main'); })->name('calendar');
 });
 
 //google login
