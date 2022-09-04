@@ -37,6 +37,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/events', function(){ return view('platform.events.main'); })->name('events');
+
+    Route::get('/friends', function(){ return view('platform.friends.main'); })->name('friends');
 });
 
 //google login
