@@ -33,6 +33,10 @@
 
             <!-- Page Content -->
             <main class="mx-5 mt-10">
+                @if (isset($slot))
+                    
+                {{ $slot }}
+                @endif
                 @yield('platform')
             </main>
         </div>
