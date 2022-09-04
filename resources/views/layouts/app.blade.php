@@ -44,5 +44,6 @@
         @stack('modals')
 
         @livewireScripts
+        @livewireCalendarScripts
     </body>
 </html>
