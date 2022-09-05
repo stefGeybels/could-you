@@ -19,14 +19,14 @@
 
             {{-- Number of Day --}}
             <div class="flex items-center">
-                <p class="text-sm {{ $dayInMonth ? ' font-medium' : '' }}">
+                <p class="text-sm {{ $dayInMonth ? ' font-medium' : '' }} {{ ($events->isNotEmpty()) ? 'text-orange-400 font-extrabold' : '' }}">
                     {{ $day->format('j') }}
                 </p>
-                <p class="text-xs text-gray-600 ml-4">
+                {{-- <p class="text-xs text-gray-600 ml-4">
                     @if($events->isNotEmpty())
                         {{ $events->count() }} {{ Str::plural('event', $events->count()) }}
                     @endif
-                </p>
+                </p> --}}
             </div>
 
             {{-- Events --}}

@@ -110,11 +110,12 @@
     </div>
     <ol class="mt-4 divide-y divide-gray-100 text-sm leading-6 lg:col-span-7 xl:col-span-8">
 
-        <p>{{ $dayTest }}</p>
+
+      @forelse ($events as $event)
       <li class="relative flex space-x-6 py-6 xl:static">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-14 w-14 flex-none rounded-full">
+        <img src="{{ $event['profile_photo'] }}" alt="" class="h-14 w-14 flex-none rounded-full">
         <div class="flex-auto">
-          <h3 class="pr-10 font-semibold text-gray-900 xl:pr-0">Leslie Alexander</h3>
+          <h3 class="pr-10 font-semibold text-gray-900 xl:pr-0">{{ $event['title'] }}</h3>
           <dl class="mt-2 flex flex-col text-gray-500 xl:flex-row">
             <div class="flex items-start space-x-3">
               <dt class="mt-0.5">
@@ -124,17 +125,17 @@
                   <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
                 </svg>
               </dt>
-              <dd><time datetime="2022-01-10T17:00">January 10th, 2022 at 5:00 PM</time></dd>
+              <dd><time datetime="2022-01-10T17:00">{{ $event['date'] }}</time></dd>
             </div>
             <div class="mt-2 flex items-start space-x-3 xl:mt-0 xl:ml-3.5 xl:border-l xl:border-gray-400 xl:border-opacity-50 xl:pl-3.5">
               <dt class="mt-0.5">
-                <span class="sr-only">Location</span>
+                {{-- <span class="sr-only">Location</span> --}}
                 <!-- Heroicon name: mini/map-pin -->
                 <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
                 </svg>
               </dt>
-              <dd>Starbucks</dd>
+              <dd>{{ $event['name_friend'] }}</dd>
             </div>
           </dl>
         </div>
@@ -168,6 +169,28 @@
           </div>
         </div>
       </li>
+      @empty
+
+      <!-- This example requires Tailwind CSS v2.0+ -->
+      <div class="text-center">
+        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        </svg>
+        <h3 class="mt-2 text-sm font-medium text-gray-900">{{  __('No events on this date')  }}</h3>
+        {{-- <p class="mt-1 text-sm text-gray-500">Get started by creating a new project.</p> --}}
+        <div class="mt-6">
+          <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <!-- Heroicon name: mini/plus -->
+            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+            </svg>
+            {{ __('Create event')  }}
+          </button>
+        </div>
+      </div>
+
+          
+      @endforelse
 
       <!-- More meetings... -->
     </ol>

@@ -83,4 +83,11 @@ class FriendsCreatingService extends PlatformServices
         return $friend->specificFriend($this->userId, $friendId);
     }
 
+    public function filterFriendsFromEvent($event)
+    {
+        $friend = ($event->creator_id == $this->userId) ? $event->invited_id : $event->creator_id;
+
+        return $friend;
+    }
+
 }
