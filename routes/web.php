@@ -25,6 +25,7 @@ Route::get('/', function ()
     // NotificationSending::sendInvite('stef.geybels@gmail.com');
     // dd(FriendSettings::findFriend(2));
     // NotificationSending::sendInvite('nick.geybels@gmail.com');
+    // EventSettings::createEvent(2,1,'new event', '2022-09-05', ['eerste item', 'volgende item']);
     return view('welcome');
 });
 
@@ -42,7 +43,7 @@ Route::middleware([
 
     Route::get('/friends', function(){ return view('platform.friends.main'); })->name('friends');
 
-    Route::get('/calendar', function() { return view('platform.calendar.main'); })->name('calendar');
+    // Route::get('/calendar', function() { return view('platform.calendar.main'); })->name('calendar');
 });
 
 //google login
