@@ -52,10 +52,10 @@
     @endif
 >
 
-<h2 class="text-lg font-semibold text-gray-900">Upcoming meetings</h2>
+<h2 class="text-lg font-semibold text-gray-900">Upcoming Could you's on {{ (isset($day)) ? $day : 'today' }}</h2>
   <div class="lg:grid lg:grid-cols-12 lg:gap-x-16">
     <div class="mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
-      <div class="flex items-center text-gray-900">
+      {{-- <div class="flex items-center text-gray-900">
         <button type="button" class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500">
           <span class="sr-only">Previous month</span>
           <!-- Heroicon name: mini/chevron-left -->
@@ -71,9 +71,9 @@
             <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
           </svg>
         </button>
-        <div>
-            @includeIf($beforeCalendarView)
-        </div>
+      </div> --}}
+      <div>
+          @includeIf($beforeCalendarView)
       </div>
       <div class="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
         @foreach($monthGrid->first() as $day)

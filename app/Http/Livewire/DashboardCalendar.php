@@ -13,26 +13,36 @@ use Livewire\Component;
 class DashboardCalendar extends LivewireCalendar
 {
 
+    public $day;
+
     public function events() : Collection
     {
 
         $dateObject = new DateTime();
 
         $date = $dateObject->format('Y-m-d');
+        // $this->day = $dateObject->format('d M');
         //return events van die specifiecke dag en die ingelogde gebruiker
         return $this->getEvents($date);
     }
 
     public function onDayClick($year, $month, $day)
     {
+
+        $dateObject = new DateTime($year . '/' . $month . '/' . $day);
+
         //return de events van die specifieke dag die geselecteeerd is
-        //wanneer er geen events opstaan komt er een plaats vervanger
+        //wanneer er geen events opstaan komt er een plaats vervange
         $this->events = $this->getEvents($year . '-' . $month . '-' . $day);
+        $this->day = $dateObject->format('d M');
     }
 
     protected function getEvents($date) : Collection
     {
+        $userId = auth()->user()->id;
         return Event::where('date', $date)
+            // ->where('creator_id', $userId)
+            // ->where('invited_id', $userId)
             ->get()
             ->map(function($event)
             {
