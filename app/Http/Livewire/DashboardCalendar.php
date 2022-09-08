@@ -34,13 +34,14 @@ class DashboardCalendar extends LivewireCalendar
         //return de events van die specifieke dag die geselecteeerd is
         //wanneer er geen events opstaan komt er een plaats vervange
         $this->events = $this->getEvents($year . '-' . $month . '-' . $day);
-        $this->day = $dateObject->format('d M');
+        $this->day = $dateObject->format('F jS');
     }
 
     protected function getEvents($date) : Collection
     {
         $userId = auth()->user()->id;
-        return Event::where('date', $date)
+        return Event::where([['date', $date], ['invited_id', $userId]])
+            ->orWhere([['date', $date], ['creator_id', $userId]])
             // ->where('creator_id', $userId)
             // ->where('invited_id', $userId)
             ->get()
