@@ -8,6 +8,8 @@ class AddAttribute extends Component
 {
     public $attributes = [];
 
+    public $item;
+
     public function render()
     {
         return view('livewire.add-attribute');
@@ -15,8 +17,17 @@ class AddAttribute extends Component
 
     public function addAttribute()
     {
-        array_push($this->attributes, "");
-
-        return $this->attributes;
+        $this->attributes[] = [
+            "id" => count($this->attributes),
+            "title". count($this->attributes) => "",
+        ];
     }
+
+    public function changeItem()
+    {
+        dd('test');
+        // $this->attributes[$itemId]['title'] = $this->item;
+    }
+
+
 }
