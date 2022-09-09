@@ -8,6 +8,7 @@ use App\Models\StandardEvent;
 use App\Models\Type;
 use DateTime;
 use App\Services\PlatformServices;
+use Illuminate\Support\Facades\Validator;
 
 class EventCreatingService extends PlatformServices
 {
@@ -52,6 +53,7 @@ class EventCreatingService extends PlatformServices
         $model = $this->getTypeModelByEvent($event);
         foreach ($items as $item) 
         {
+            Validator::make($item, 'required|string|max:255')->validate();
             $type = new $model;
             $type->event_id = $event->id;
             $type->item = $item;
