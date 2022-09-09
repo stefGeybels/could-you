@@ -42,8 +42,6 @@ class DashboardCalendar extends LivewireCalendar
         $userId = auth()->user()->id;
         return Event::where([['date', $date], ['invited_id', $userId]])
             ->orWhere([['date', $date], ['creator_id', $userId]])
-            // ->where('creator_id', $userId)
-            // ->where('invited_id', $userId)
             ->get()
             ->map(function($event)
             {
