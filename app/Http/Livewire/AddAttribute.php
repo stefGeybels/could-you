@@ -19,7 +19,7 @@ class AddAttribute extends Component
     {
         $this->attributes[] = [
             "id" => count($this->attributes),
-            "title". count($this->attributes) => "",
+            "title" => "",
         ];
     }
 
