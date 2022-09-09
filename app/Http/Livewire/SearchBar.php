@@ -10,13 +10,18 @@ class SearchBar extends Component
 
     public $search = '';
 
+    public $searchId = '';
+
+    public $friendSelected;
+
     public $users = [];
 
     public function render()
     {
         if (strlen($this->search) <= 3) 
         {
-            $users = [true];
+            $this->users = [];
+            $this->friendSelected = false;
         }
         else 
         {
@@ -24,5 +29,16 @@ class SearchBar extends Component
         }
 
         return view('livewire.search-bar');
+    }
+
+    public function setUser($user)
+    {
+        $this->searchId = $user['id'];
+
+        $this->search = $user['email'];
+
+        $this->friendSelected = true;
+
+        $this->users = [];
     }
 }

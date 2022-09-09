@@ -35,6 +35,11 @@
                 </div>
             </div>
             <div class="flex-1 px-2 flex justify-center lg:ml-6 lg:justify-end">
+                <div class="max-w-lg w-full lg:max-w-xs">
+            <livewire:search-bar />
+            </div>
+        </div>
+            {{-- <div class="flex-1 px-2 flex justify-center lg:ml-6 lg:justify-end">
                 <!-- Search section -->
                 <div class="max-w-lg w-full lg:max-w-xs">
                   <label for="search" class="sr-only">Search</label>
@@ -48,7 +53,7 @@
                     <input id="search" class="block w-full bg-white py-2 pl-10 pr-3 border border-gray-300 rounded-md leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 focus:placeholder-gray-500 sm:text-sm" placeholder="Search" type="search" name="search">
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
