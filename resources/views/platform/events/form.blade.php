@@ -2,23 +2,6 @@
 
 @section('platform')
     
-
-<!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <div class="overflow-hidden px-4 sm:px-6 lg:px-8 ">
     <div class="relative mx-auto max-w-xl">
       <div class="text-center">
@@ -45,9 +28,9 @@
             <label for="email" class="block text-sm font-medium text-gray-700">{{ __('Invite friend') }}</label>
 
             <div class=" flex justify-center">
-                <!-- Search section -->
+
                 <div class="w-full">
-                  <label for="search" class="sr-only">Search</label>
+                  {{-- <label for="search" class="sr-only">Search</label>
                   <div class="relative text-gray-400 focus-within:text-gray-500">
                     <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
                       <!-- Heroicon name: solid/search -->
@@ -56,9 +39,11 @@
                       </svg>
                     </div>
                     <input id="search" class="block w-full bg-white py-2 pl-10 pr-3 border border-gray-300 rounded-md leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 focus:placeholder-gray-500 sm:text-sm" placeholder="Search" type="search" name="invited_id">
-                  </div>
+                  </div> --}}
+                  <livewire:search-bar />
                 </div>
               </div>
+
         </div>
         
         <div class="sm:col-span-2">
