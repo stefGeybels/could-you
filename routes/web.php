@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\SocialAuthController;
 use App\Models\Event;
 use App\Models\User;
@@ -43,6 +44,7 @@ Route::middleware([
 
     Route::get('/friends', function(){ return view('platform.friends.main'); })->name('friends');
 
+    Route::resource('/event', EventController::class);
     // Route::get('/calendar', function() { return view('platform.calendar.main'); })->name('calendar');
 });
 
