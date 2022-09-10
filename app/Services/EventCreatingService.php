@@ -51,9 +51,9 @@ class EventCreatingService extends PlatformServices
     public function addItems(Event $event, array $items)
     {
         $model = $this->getTypeModelByEvent($event);
+        Validator::make($items, ['required|string|max:255'])->validate();
         foreach ($items as $item) 
         {
-            Validator::make($item, 'required|string|max:255')->validate();
             $type = new $model;
             $type->event_id = $event->id;
             $type->item = $item;
@@ -61,7 +61,6 @@ class EventCreatingService extends PlatformServices
             $type->updated_at = $this->datetime;
             $type->save();
         }
-
         return true;
     }
 
@@ -78,7 +77,7 @@ class EventCreatingService extends PlatformServices
         $event = $this->updateEvent($eventId, $eventItemsToUpdate);
         foreach ($attributesToUpdate as $attribute) 
         {
-            $this->updateItem($event->id, $attribute->id, $attribute->title);
+            $this->updateItem($event->type_id, $attribute['item_id'], $attribute['item'], $event);
         }
 
         return $event;
@@ -98,12 +97,18 @@ class EventCreatingService extends PlatformServices
 
     }
 
-    public function updateItem( $typeId, $itemId, $title)
+    public function updateItem( $typeId, $itemId, $title, $event)
     {
         $model = $this->getTypeModelById($typeId);
-        $item = $model::find($itemId);
-        $item->item = $title;
-        $item->save();
+        if ($itemId !== null) 
+        {   
+            $item = $model::find($itemId);
+            $item->item = $title;
+            $item->save();
+            return true;
+        }
+
+        $this->addItems($event, [$title]);
 
         return true;
     }
