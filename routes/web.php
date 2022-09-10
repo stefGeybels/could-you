@@ -44,7 +44,7 @@ Route::middleware([
 
     Route::get('/friends', function(){ return view('platform.friends.main'); })->name('friends');
 
-    Route::resource('/event', EventController::class);
+    Route::resource('/event', EventController::class)->except('edit')->name('index', 'events');
     // Route::get('/calendar', function() { return view('platform.calendar.main'); })->name('calendar');
 });
 
