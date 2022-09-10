@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EventRequest;
+use App\Models\Event;
 use App\Services\Facades\EventSettings;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('platform.events.form');
+        return view('platform.events.main');
     }
 
     /**
@@ -25,7 +26,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('platform.events.form');
     }
 
     /**
@@ -36,7 +37,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        dd($request);
         $validatedData = $request->validate([
             'invited_id' => 'required|integer',
             'type_id' => 'required|integer',
@@ -44,15 +45,17 @@ class EventController extends Controller
             'date' => 'required|date',
         ]);
 
+        $attributes = $request->all();
+
         EventSettings::createEvent(
-            $validatedData['invited_id'],
+            $validatedData['search_id'],
             $validatedData['type_id'],
             $validatedData['title'],
             $validatedData['date'],
-            $request->attributes,
+            $attributes['attributes'],
         );
 
-        dd('succes');
+        return redirect()->back();
     }
 
     /**
@@ -61,9 +64,9 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        //
+        return view('platform.events.form')->with('existingEvent', $event);
     }
 
     /**
@@ -72,10 +75,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    // public function edit($id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -84,9 +87,12 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EventRequest $request, $id)
     {
-        //
+        // dd($request);
+        EventSettings::updateEventWithItems($id, $request->validated(), $request->all()['attributes']);
+
+        return redirect()->back();
     }
 
     /**
@@ -97,6 +103,8 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Event::find($id)->delete();
+
+        return redirect('/dashboard');
     }
 }
