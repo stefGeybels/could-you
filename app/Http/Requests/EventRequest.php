@@ -14,9 +14,11 @@ class EventRequest extends FormRequest
      */
     public function authorize()
     {
-        $event = Event::find($this->input('id'));
+        // $event = Event::find($this->input('id'));
 
-        return $event && $this->user()->can('can_edit_event', [auth()->user(), $event,'request']);
+        // return $event && $this->user()->can('can_edit_event', [auth()->user(), $event,'request']);
+
+        return true;
     }
 
     /**
