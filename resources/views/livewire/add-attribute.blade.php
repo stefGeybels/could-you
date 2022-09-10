@@ -10,7 +10,12 @@
 
                 <div class="ml-3 text-sm w-full">
                     <div class="mt-1 ">
-                        <input type="attribute" name="attributes[]" wire:model.lazy="attributes.{{$item['id']}}.title" wire:key="item-{{ rand(0, 100000) }}" id="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Something funny">
+                        @if ($updateEvent)
+                            <input type="hidden" name="attributes[{{$item['id']}}][item_id]" value="{{ (isset($item['item_id'])) ? $item['item_id'] : null }}">
+                            <input type="text" name="attributes[{{$item['id']}}][item]"  wire:model.lazy="attributes.{{$item['id']}}.title" wire:key="item-{{ rand(0, 100000) }}" id="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        @else
+                            <input type="text" name="attributes[]"  wire:model.lazy="attributes.{{$item['id']}}.title" wire:key="item-{{ rand(0, 100000) }}" id="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        @endif
                     </div>
                 </div>
             </div>
