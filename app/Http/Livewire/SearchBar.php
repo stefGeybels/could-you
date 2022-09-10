@@ -16,8 +16,24 @@ class SearchBar extends Component
 
     public $users = [];
 
+    public $friendId;
+
     public function render()
     {
+
+        if (isset($this->friendId)) 
+        {
+            $friend = User::find($this->friendId);
+
+            $this->searchId = $this->friendId;
+
+            $this->friendSelected = true;
+
+            $this->users = [];
+
+            $this->search = $friend->email;
+        }
+
         if (strlen($this->search) <= 3) 
         {
             $this->users = [];
