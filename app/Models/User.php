@@ -62,7 +62,25 @@ class User extends Authenticatable
 
     public function getEvents()
     {
-        return $this->hasMany(Event::class, 'creator_id', 'id');
+        // returns enkel de events die deze persoon gemaakt heeft
+        // Moet normaal ook de uitgenodigde events tone
+        // Voorbeeld nemen aan getFriends functie
+        $eventArray = [];
+
+        $createdEvents = $this->hasMany(Event::class, 'creator_id', 'id')->get();
+        $invitedEvents = $this->hasMany(Event::class, 'invited_id', 'id')->get();
+
+        foreach ($createdEvents as $event) 
+        {
+            array_push($eventArray, $event);
+        }
+
+        foreach ($invitedEvents as $event) 
+        {
+            array_push($eventArray, $event);
+        }
+
+        return $eventArray;
     }
 
     public function getFriends()
@@ -85,7 +103,7 @@ class User extends Authenticatable
         {
             $newFriend = [
                 'id' => $friend->id,
-                'friend_id' => $friend->asked_id,
+                'friend_id' => $friend->asking_id,
             ];
 
             array_push($friendArray, $newFriend);
@@ -93,6 +111,11 @@ class User extends Authenticatable
 
         return $friendArray;
 
+    }
+
+    public function getRequests()
+    {
+        return $this->hasMany(Friend::class, 'asked_id', 'id')->where('accepted', false)->get();
     }
 
     
