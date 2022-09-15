@@ -23,9 +23,9 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
+                    {{-- <x-jet-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
                         {{ __('Events') }}
-                    </x-jet-nav-link>
+                    </x-jet-nav-link> --}}
                     <x-jet-nav-link href="{{ route('friends') }}" :active="request()->routeIs('friends')">
                         {{ __('Friends') }}
                     </x-jet-nav-link>
@@ -178,9 +178,9 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
+            {{-- <x-jet-responsive-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
                 {{ __('Events') }}
-            </x-jet-responsive-nav-link>
+            </x-jet-responsive-nav-link> --}}
             <x-jet-responsive-nav-link href="{{ route('friends') }}" :active="request()->routeIs('friends')">
                 {{ __('Friends') }}
             </x-jet-responsive-nav-link>
