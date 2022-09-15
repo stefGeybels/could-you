@@ -16,7 +16,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('platform.events.main');
+        return view('platform.events.main')->with('events', auth()->user()->getEvents());
     }
 
     /**
