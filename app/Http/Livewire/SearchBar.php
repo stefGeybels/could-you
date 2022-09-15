@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Services\Facades\FriendSettings;
 use Livewire\Component;
 
 class SearchBar extends Component
@@ -56,5 +57,10 @@ class SearchBar extends Component
         $this->friendSelected = true;
 
         $this->users = [];
+    }
+
+    public function friendRequest($userId)
+    {
+        FriendSettings::addFriend($userId);
     }
 }
