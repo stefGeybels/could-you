@@ -3,7 +3,6 @@
 @section('platform')
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="mx-auto max-w-4xl">
-
         <ul role="list" class="space-y-3">
             <li class="bg-white shadow overflow-hidden rounded-md px-6 py-4">
                 
