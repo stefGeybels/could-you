@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FriendController;
 use App\Http\Controllers\SocialAuthController;
 use App\Models\Event;
 use App\Models\User;
@@ -42,9 +43,13 @@ Route::middleware([
 
     Route::get('/events', function(){ return view('platform.events.main'); })->name('events');
 
-    Route::get('/friends', function(){ return view('platform.friends.main'); })->name('friends');
+    Route::resource('/event', EventController::class)->except('edit', 'index');
 
-    Route::resource('/event', EventController::class)->except('edit')->name('index', 'events');
+    Route::get('/friends', [FriendController::class, 'index'])->name('friends');
+    Route::delete('/friend/delete/{id}', [FriendController::class, 'destroyFriendship']);
+    Route::post('/friend-request', [FriendController::class, 'askForFriendship']);
+    Route::put('/accept-friendship/{id}', [FriendController::class, 'acceptingFriendship']);
+    Route::delete('/friend/reject', [FriendController::class, 'rejectFriendship']);
     // Route::get('/calendar', function() { return view('platform.calendar.main'); })->name('calendar');
 });
 
