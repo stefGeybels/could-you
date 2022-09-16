@@ -56,7 +56,7 @@ class DashboardCalendar extends LivewireCalendar
                     'title' => $event->title,
                     'date' => $date,
                     'name_friend' => $friendInfo->name,
-                    'profile_photo' => $friendInfo->profile_photo_path,
+                    'profile_photo' => $friendInfo->profile_photo_url,
                 ];
             });
     }

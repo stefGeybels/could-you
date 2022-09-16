@@ -54,7 +54,7 @@ class EventController extends Controller
             $attributes['attributes'],
         );
 
-        return redirect()->action([EventController::class, 'index']);
+        return redirect('/dashboard');
     }
 
     /**
