@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CouldYouController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FriendController;
 use App\Http\Controllers\SocialAuthController;
@@ -50,6 +51,8 @@ Route::middleware([
     Route::post('/friend-request', [FriendController::class, 'askForFriendship']);
     Route::put('/accept-friendship/{id}', [FriendController::class, 'acceptingFriendship']);
     Route::delete('/friend/reject', [FriendController::class, 'rejectFriendship']);
+
+    Route::get('/could-you/{id}', [CouldYouController::class, 'couldYou']);
     // Route::get('/calendar', function() { return view('platform.calendar.main'); })->name('calendar');
 });
 

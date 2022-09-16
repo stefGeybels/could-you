@@ -116,7 +116,7 @@
       @forelse ($events as $event)
       <li class="relative flex space-x-6 py-6 xl:static">
         <img src="{{ $event['profile_photo'] }}" alt="" class="h-14 w-14 flex-none rounded-full">
-        <a href="/event/{{ $event['id'] }}" class="flex-auto">
+        <a href="/could-you/{{ $event['id'] }}" class="flex-auto">
             <h3 class="pr-10 font-semibold text-gray-900 xl:pr-0">{{ $event['title'] }}</h3>
             <dl class="mt-2 flex flex-col text-gray-500 xl:flex-row">
               <div class="flex items-start space-x-3">
