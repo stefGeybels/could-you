@@ -156,4 +156,14 @@ class EventCreatingService extends PlatformServices
 
         return true;
     }
+
+    public function updateBoolItem($typeId, $itemId)
+    {
+        $model = $this->getTypeModelById($typeId);
+        $item = $model::find($itemId);
+        $item->done = !$item->done;
+        $item->save();
+
+        return $item->done;
+    }
 }
