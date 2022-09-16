@@ -19,6 +19,8 @@ class SearchBar extends Component
 
     public $friendId;
 
+    public $eventBar;
+
     public function render()
     {
 

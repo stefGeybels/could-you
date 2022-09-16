@@ -16,10 +16,10 @@
             </div>
             @if (!empty($users) && $friendSelected != true)
             
-            <ul class="flex flex-col justify-center absolute z-10 mt-1 max-h-60 w-80 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+            <ul class="flex flex-col gap-4 justify-center absolute z-10 mt-1 max-h-60 w-80 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
                 
                 @forelse ($users as $user)
-                <div class="grid grid-cols-2">
+                <div class="flex justify-between">
 
                     <button type="button" wire:click="setUser({{ $user }})">
                         <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
@@ -41,9 +41,12 @@
                             </span> --}}
                         </li>
                     </button>
-                    <div class="flex justify-end bg-red-300">
+                    @if (!isset($eventBar))
+                        
+                    <div class="flex justify-end">
                         <button type="button" wire:click="friendRequest({{ $user->id }})" class="rounded-full border border-transparent bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">ask</button>
                     </div>
+                    @endif
                 </div>
                 @empty
                 
