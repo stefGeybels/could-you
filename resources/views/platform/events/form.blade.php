@@ -70,7 +70,9 @@
                     </div>
                     <input id="search" class="block w-full bg-white py-2 pl-10 pr-3 border border-gray-300 rounded-md leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 focus:placeholder-gray-500 sm:text-sm" placeholder="Search" type="search" name="invited_id">
                   </div> --}}
-                  <livewire:search-bar />
+                  <livewire:search-bar
+                    eventBar="true"
+                  />
                 </div>
               </div>
 
@@ -156,6 +158,7 @@
                   </div> --}}
                   <livewire:search-bar 
                     friendId="{{ $existingEvent->invited_id }}"
+                    eventBar="true"
                   />
                 </div>
               </div>
