@@ -37,7 +37,6 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $validatedData = $request->validate([
             'invited_id' => 'required|integer',
             'type_id' => 'required|integer',
@@ -48,14 +47,14 @@ class EventController extends Controller
         $attributes = $request->all();
 
         EventSettings::createEvent(
-            $validatedData['search_id'],
+            $validatedData['invited_id'],
             $validatedData['type_id'],
             $validatedData['title'],
             $validatedData['date'],
             $attributes['attributes'],
         );
 
-        return redirect()->back();
+        return redirect()->action([EventController::class, 'index']);
     }
 
     /**
