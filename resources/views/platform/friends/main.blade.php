@@ -15,7 +15,7 @@
           @foreach ($requests as $friend)
           <li>
             <div class="space-y-4">
-              <img class="mx-auto h-20 w-20 rounded-full lg:h-24 lg:w-24" src="{{ ($friend->profile_photo_path === null) ? $friend->profile_photo_url : $friend->profile_photo_path }}" alt="">
+              <img class="mx-auto h-20 w-20 rounded-full lg:h-24 lg:w-24" src="{{ $friend->profile_photo_url  }}" alt="">
               <div class="space-y-2">
                 <div class="text-xs font-medium lg:text-sm">
                   <h3>{{ $friend->name }} Stef</h3>
