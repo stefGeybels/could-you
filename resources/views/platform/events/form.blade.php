@@ -50,7 +50,7 @@
           <div class="sm:col-span-2">
             <label for="email" class="block text-sm font-medium text-gray-700">{{ __('Date') }}</label>
             <div class="mt-1">
-              <input id="date" name="date" type="date" autocomplete="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+              <input id="date" name="date" type="date" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
             </div>
           </div>
 
