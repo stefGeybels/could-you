@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Event;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class EventRequest extends FormRequest
 {
@@ -14,9 +15,17 @@ class EventRequest extends FormRequest
      */
     public function authorize()
     {
-        // $event = Event::find($this->input('id'));
+        $event = Event::find($this->route('event'));
 
-        // return $event && $this->user()->can('can_edit_event', [auth()->user(), $event,'request']);
+        Gate::allowIf(function ($user) use ($event)
+        {
+            if ($event->creator_id == $user->id || $event->invited_id == $user->id) 
+            {
+                return true;
+            }
+
+            return false;
+        } );
 
         return true;
     }

@@ -6,6 +6,7 @@ use App\Http\Requests\EventRequest;
 use App\Models\Event;
 use App\Services\Facades\EventSettings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EventController extends Controller
 {
@@ -65,6 +66,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+
+        Gate::check('can_edit_event', [$event, 'view']);
+
         return view('platform.events.form')->with('existingEvent', $event);
     }
 
@@ -102,7 +106,11 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        Event::find($id)->delete();
+        $event = Event::find($id);
+        
+        Gate::check('can_edit_event', [$event, 'delete']);
+
+        $event->delete();
 
         return redirect('/dashboard');
     }
